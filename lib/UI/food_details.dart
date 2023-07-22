@@ -1,5 +1,6 @@
 import 'package:bottom_navy_bar/bottom_navy_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:food_project/model/product_model.dart';
 
 class FoodDetails extends StatefulWidget {
   const FoodDetails({Key? key}) : super(key: key);
@@ -11,6 +12,8 @@ class FoodDetails extends StatefulWidget {
 class _FoodDetailsState extends State<FoodDetails> {
   int currentIndex = 0;
   List foodListData = ["Chinese","Dinner","5 Ingredients","Beautiful","Soup"];
+  //List? productList;
+  List  productList =[Product(name: "Noodles",image: "assets/images/noodles.png"),Product(name: "Prawns",image: "assets/images/prawns.png"),Product(name: "Cone Flour",image: "assets/images/conflour.png"),Product(name: "Eggs",image: "assets/images/egg.png"),Product(name: "Tomato",image: "assets/images/tomatto.png")];
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -165,12 +168,49 @@ class _FoodDetailsState extends State<FoodDetails> {
                     ),),
                   ),
 
-
+                  SizedBox(
+                    height: 130,
+                    width: double.infinity,
+                    child: Padding(
+                      padding: const EdgeInsets.only(top:10,left: 10,right: 10),
+                      child: ListView.builder(
+                          scrollDirection: Axis.horizontal,
+                          itemCount: productList.length,
+                          shrinkWrap: true,
+                          itemBuilder: (context,index1){
+                            return Padding(
+                              padding: const EdgeInsets.only(left: 10),
+                              child:Column(
+                                children: [
+                                  Container(
+                                    decoration: BoxDecoration(
+                                      color: Color(0xFFF0F5F9),
+                                      // Set border width
+                                      borderRadius: BorderRadius.all(
+                                          Radius.circular(20.0)), // Set rounded corner radius
+                                    ),
+                                    child: Center(
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(10),
+                                        child: Image.asset("${productList[index1].image}")
+                                      ),
+                                    ),
+                                  ),
+                                  SizedBox(height: 10,),
+                                  Text("${productList[index1].name}",style: TextStyle(
+                                    fontSize: 12,fontWeight: FontWeight.w500,color: Color(0xFF333333),
+                                  ),),
+                                ],
+                              ),
+                            );
+                          }),
+                    ),
+                  ),
 
 
 
                   Padding(
-                    padding: const EdgeInsets.only(top:20,left: 20),
+                    padding: const EdgeInsets.only(left: 20),
                     child:  Text("Lets make it step By Step",style: TextStyle(
                       fontSize: 16,fontWeight: FontWeight.w500,color: Color(0xFF333333),
                     ),),
