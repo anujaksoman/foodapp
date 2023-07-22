@@ -24,7 +24,9 @@ class _FoodDetailsState extends State<FoodDetails> {
             backgroundColor: Color(0xFFFC6009),
             automaticallyImplyLeading: false,
             leading: IconButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pop(context);
+              },
               icon: Icon(Icons.chevron_left),
             ),
           ),
@@ -244,6 +246,8 @@ class _FoodDetailsState extends State<FoodDetails> {
                       ],
                     )
                   ),
+
+                  SizedBox(height: 10,),
 
                 ],
 
